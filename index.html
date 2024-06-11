@@ -18,7 +18,7 @@
         <form action="/action_page.php">
             <label>Tipo:</label>
             <select class="form-select">
-                <option selected>Selecione o tipo</option>
+                <option selected disabled>Selecione o tipo</option>
                 <option>Entrada</option>
                 <option>Saída</option>
               </select>
@@ -31,7 +31,7 @@
                 <input type="value" class="form-control" id="pwd" placeholder="Digite o valor da movimentação" name="pswd">
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary" id="botao">Cadastrar</button>
             </div>
         </form>
     <hr>
@@ -66,6 +66,7 @@
 
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
