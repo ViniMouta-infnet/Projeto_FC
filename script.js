@@ -1,3 +1,4 @@
+let valorAcumulado = {entradas:[], saidas:[]}
 
 document.getElementById('botao').addEventListener('click', function(){
         
@@ -5,6 +6,7 @@ document.getElementById('botao').addEventListener('click', function(){
     let descricao = document.getElementById('descricao').value;
     let valor = parseFloat(document.getElementById('valor').value);
     let data = new Date().toLocaleDateString();
+    
 
     let mensagemErro = validacaoCampos(tipo, descricao, valor);
     if (mensagemErro) {
@@ -13,7 +15,8 @@ document.getElementById('botao').addEventListener('click', function(){
     }
     
     inserirDados(tipo, descricao, valor, data);
-    atualizarTotal(tipo, valor);
+    document.getElementById('form-fluxo').reset();
+    
 
     document.getElementById('form-fluxo').reset();
 });
@@ -41,16 +44,21 @@ function inserirDados(tipo, descricao, valor, data) {
 
     if (tipo === 'Entrada') {
         document.getElementById('tabela-entradas').innerHTML += linha;
+        valorAcumulado.entradas.push(valor);
+        atualizarTotal('entradas', valor);
     } else if (tipo === 'Saída') {
         document.getElementById('tabela-saidas').innerHTML += linha;
+        valorAcumulado.saidas.push(valor);
+        atualizarTotal('saidas', valor);
     }
+    
 }
 
-function atualizarTotal(){
+function atualizarTotal(tipo, valor){
     let totalTipo = tipo === 'entradas' ? document.getElementById('total-entradas') : document.getElementById('total-saidas');
-    let total = parseFloat(totalTipo) || 0;
-    total += valor;
-    totalTipo.innerHTML = total.toFixed(2);
+    let total = parseFloat(totalTipo.innerHTML) || 0;
+        total += valor; 
+        totalTipo.innerHTML = total.toFixed(2);
 }
 
 
