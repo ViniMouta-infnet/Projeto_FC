@@ -43,7 +43,11 @@ function inserirDados(tipo, descricao, valor, data) {
                     <td>${data}</td>
                     <td>${descricao}</td>
                     <td>${valor.toFixed(2)}</td>
-                    <td><button class="btn btn-sm btn-warning" onclick="editarLinha(this, '${tipo}')">Editar</button></td>
+                    <td>
+                        <button class="btn btn-center btn-sm" onclick="editarLinha(this, '${tipo}')">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
                  </tr>`;
 
     if (tipo === 'Entrada') {
